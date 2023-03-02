@@ -1,0 +1,125 @@
+//SOS OYUNU
+#include <iostream>
+#include <stdlib.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+ char tahta[3][3];
+ //OYUN TAHTASINI EKRANA YAZDIRALIM
+ for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        tahta[i][j]=45;
+        cout<<"|"<<tahta[i][j]<<"|";
+    }
+    cout<<endl;
+ }
+  cout<<endl;
+  
+   int pc_satir,pc_sutun;
+   int satir_index,sutun_index;
+   char harf;
+   int kontrol;
+   srand(time(NULL));
+   bool kazanmak;
+   int kullanici=1;
+   int sayac=0;
+   int deneme_sayac=0;
+
+  pc_satir=rand()%3;
+  pc_sutun=rand()%3;
+  while(sayac<5)
+  {
+      while(deneme_sayac<5){
+            cout<<"SIRA SENDE"<<endl;
+        cout<<"Lutfen oynamak istediginiz satir indexini giriniz."<<endl;cin>>satir_index;
+        cout<<"Lutfen oynamak istediginiz sutun indexini giriniz."<<endl;cin>>sutun_index;
+        if(tahta[satir_index][sutun_index]!=45)
+        {
+         deneme_sayac++;
+        }
+      else{
+        deneme_sayac=5;
+      }
+
+    }
+
+  cout<<satir_index<<","<<sutun_index<<"i sectiniz"<<"Harf giriniz.(S/O)"<<endl;cin>>harf;
+  tahta[satir_index][sutun_index]=harf;
+  deneme_sayac=0;
+
+  //cout<< tahta[satir_index][sutun_index];
+   for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        cout<<"|"<<tahta[i][j]<<"|";
+         system("color 5");
+    }
+    cout<<endl;
+ }
+  cout<<endl;
+
+  cout<<"2.kullanici oynuyor"<<endl;
+  system("color 7");
+  kullanici=2;
+    pc_satir=rand()%3;
+    pc_sutun=rand()%3;
+    kontrol=rand()%3;
+
+    cout<<"INDEX"<<pc_satir<<","<<pc_sutun<<endl;
+     cout<<"KONTROL"<<kontrol;
+
+ if(tahta[pc_satir][pc_sutun]!=45)
+ {
+       pc_satir=rand()%3;
+      pc_sutun=rand()%3;
+      kontrol=rand()%3;
+      cout<<"INDEX"<<pc_satir<<","<<pc_sutun<<endl;
+ }
+ if(kontrol==0){
+        tahta[pc_satir][pc_sutun]='S';
+ }
+ else if(kontrol==1){
+
+     tahta[pc_satir][pc_sutun]='O';
+ }
+ else
+ {
+     kontrol=2;
+     tahta[pc_satir][pc_sutun]='O';
+ }
+    for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        cout<<"|"<<tahta[i][j]<<"|";
+    }
+    cout<<endl;
+
+ }
+  cout<<endl;
+  if(tahta[0][0]=='S' &&tahta[0][1]=='O'&&tahta[0][2]=='S')
+  {
+      kazanmak=true;
+      cout<<"kullanici:"<<kullanici<<"kazandi";
+
+  }
+  else if(tahta[0][2]=='S' &&tahta[1][1]=='O'&&tahta[2][0]=='S')
+  {
+            kazanmak=true;
+      cout<<"kullanici:"<<kullanici<<"kazandi";
+
+  }
+  else
+  {
+     sayac++;
+     kazanmak=false;
+  }
+
+ //eðer satýr ve sutunda s veya o varsa birdaha rastgele sayi uret
+ //yoksa yaz
+
+  }
+
+
+}
